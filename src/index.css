@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navbar--height: 3.5rem;
+}
+body,
+html {
+  @apply bg-black box-border text-white;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Light.ttf");
+  font-weight: 300;
+}
+
+.page {
+  @apply mt-[var(--navbar--height)];
+}
+
+/* width */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background: #111111;
+  border-radius: 2px;
+  width: 4px;
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+  background: #353535;
+}
+
+.body__scroll-hiden {
+  overflow: hidden;
+}
+
+.ra_navbar {
+  @apply bg-neutral-950/80 backdrop-blur-[3px];
+}
