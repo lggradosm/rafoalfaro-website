@@ -80,9 +80,19 @@ export default function Studio() {
           position={equipoDummy[2].position}
         />
         <CollageImage image={infraestructuraDummy[9]} center={true} />
-
+        <CollageImage
+          image={equipoDummy[10].image}
+          type="team"
+          name={equipoDummy[10].name}
+          position={equipoDummy[10].position}
+        />
         <CollageImage image={reel3} type="video" />
-
+        <CollageImage
+          image={equipoDummy[17].image}
+          type="team"
+          name={equipoDummy[17].name}
+          position={equipoDummy[17].position}
+        />
         <CollageImage
           image={equipoDummy[9].image}
           type="team"
@@ -101,14 +111,20 @@ export default function Studio() {
           position={equipoDummy[13].position}
         />
         <CollageImage image={infraestructuraDummy[8]} center={true} />
-
         <CollageImage
-          image={equipoDummy[8].image}
+          image={equipoDummy[18].image}
           type="team"
-          name={equipoDummy[8].name}
-          position={equipoDummy[8].position}
+          name={equipoDummy[18].name}
+          position={equipoDummy[18].position}
         />
         <CollageImage image={reel1} type="video" />
+        <CollageImage
+          image={equipoDummy[16].image}
+          type="team"
+          name={equipoDummy[16].name}
+          position={equipoDummy[16].position}
+        />
+        <CollageImage image={infraestructuraDummy[6]} center={true} />
       </div>
     </div>
   );

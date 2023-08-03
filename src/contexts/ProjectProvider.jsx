@@ -24,7 +24,10 @@ export function ProjectContextProvider({ children }) {
     );
   }, []);
   return (
-    <ProjectContext.Provider value={{ coverProject, loaded, projects }}>
+    <ProjectContext.Provider
+      className="relative"
+      value={{ coverProject, loaded, projects }}
+    >
       {children}
     </ProjectContext.Provider>
   );

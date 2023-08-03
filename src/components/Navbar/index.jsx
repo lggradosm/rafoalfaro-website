@@ -40,8 +40,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed z-30 h-navbar top-0 left-0 w-screen    duration-300 ease-[cubic-bezier(.42,-0.01,.47,1)]  ${
-        transparentNavbar ? "bg-transparent" : "ra_navbar "
+      className={`fixed z-20 h-navbar top-0 left-0 w-screen    duration-300 ease-[cubic-bezier(.42,-0.01,.47,1)]  ${
+        transparentNavbar ? "bg-transparent" : " ra_navbar"
       }`}
     >
       <nav className="w-full h-full flex flex-col justify-center">

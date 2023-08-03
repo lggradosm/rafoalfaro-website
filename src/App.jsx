@@ -11,32 +11,30 @@ import ProjectDetail from "./components/Projects/ProjectDetail";
 function App() {
   return (
     <BrowserRouter>
-      <main>
+      <main className="min-h-[calc(100vh-7rem)]">
         <Navbar />
-        <section className="">
-          <Routes>
-            <Route
-              element={
-                <HomeContextProvider>
-                  <Home />
-                </HomeContextProvider>
-              }
-              path={"/*"}
-            />
-            <Route
-              element={
-                <ProjectContextProvider>
-                  <Projects />
-                </ProjectContextProvider>
-              }
-              path={`/proyectos`}
-            />
-            <Route element={<ProjectDetail />} path={`/proyectos/:id`} />
-            <Route element={<Studio />} path={`/estudio`} />
-            <Route element={<Contact />} path={`/contacto`} />
-            <Route element={<Navigate to="/" />} path={`*`} />
-          </Routes>
-        </section>
+        <Routes>
+          <Route
+            element={
+              <HomeContextProvider>
+                <Home />
+              </HomeContextProvider>
+            }
+            path={"/*"}
+          />
+          <Route
+            element={
+              <ProjectContextProvider>
+                <Projects />
+              </ProjectContextProvider>
+            }
+            path={`/proyectos`}
+          />
+          <Route element={<ProjectDetail />} path={`/proyectos/:id`} />
+          <Route element={<Studio />} path={`/estudio`} />
+          <Route element={<Contact />} path={`/contacto`} />
+          <Route element={<Navigate to="/" />} path={`*`} />
+        </Routes>
       </main>
       <Footer />
     </BrowserRouter>

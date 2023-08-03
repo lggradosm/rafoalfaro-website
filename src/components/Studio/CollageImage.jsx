@@ -56,7 +56,7 @@ export default function CollageImage({
         </video>
       ) : (
         <div className="h-full w-full">
-          <div className="bg-transparent absolute z-20 w-full h-full left-0 top-0 " />
+          <div className="bg-transparent absolute z-10 w-full h-full left-0 top-0 " />
           <img
             src={image}
             alt=""

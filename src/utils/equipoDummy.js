@@ -64,7 +64,7 @@ const equipoDummy = [
     id: 11,
     name: "Gabriel Grados",
     position: "Visualizador Arquitectónico",
-    image: `/images/studio/Luis-Grados.webp`,
+    image: `/images/studio/Gabriel.webp`,
   },
   {
     id: 13,
@@ -95,6 +95,24 @@ const equipoDummy = [
     name: "Yelina Castro",
     position: "Asistente de Ingeniería",
     image: `/images/studio/Yelina-Castro.webp`,
+  },
+  {
+    id: 18,
+    name: "Alonso Arroyo",
+    position: "Asistente de Arquitectura",
+    image: `/images/studio/alonso.webp`,
+  },
+  {
+    id: 19,
+    name: "Nashla Cuba",
+    position: "Asistente de Arquitectura",
+    image: `/images/studio/nashla.webp`,
+  },
+  {
+    id: 20,
+    name: "Carlos Miranda",
+    position: "Asistente de Arquitectura",
+    image: `/images/studio/carlos-miranda.webp`,
   },
 ];
 

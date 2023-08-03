@@ -8,26 +8,24 @@ export default function ProjectDetail() {
   const { id } = useParams();
   const [lang, setLang] = useState("ES");
   const { project } = useGetProjectByIdFetch(id);
-
   return (
     <Loading loadCondition={project}>
-      <div className="relative page p-4   ">
-        <div className="w-full mx-auto  flex flex-col xl:flex-row">
-          <div className="w-full lg:w-4/5 p-1">
-            <GalleryThumbnail images={project?.gallery} />
-          </div>
-
-          <div className="w-full lg:w-1/5 flex flex-col mb-4 text-white p-4">
-            <div className="flex flex-col md:flex-row   mb-2 md:mb-0 md:items-center justify-between">
-              <div className="font-bold font-widescreen  w-full ">
+      <div className=" page px-4 box-border  flex md:flex-row flex-col gap-8">
+        <div className="md:w-4/6 lg:w-4/6 w-full   ">
+          <GalleryThumbnail images={project?.gallery} />
+        </div>
+        {project?.text_es && project?.subtitle_es ? (
+          <div className="md:w-2/6 lg:w-2/6 w-full  flex flex-col py-6 ">
+            <div className="flex flex-col md:flex-row  w-full mb-2 md:mb-0 md:items-center justify-between">
+              <div className="font-bold font-widescreen  w-full">
                 <div className="flex gap-4">
-                  <h1 className="text-xl md:text-4xl   font-bold  tracking-wide w-4/5 ">
+                  <h1 className="text-2xl md:text-4xl   font-bold  tracking-wide w-4/5 ">
                     {lang === "ES"
                       ? project?.title_es
                       : project?.title_en || project?.title_es}
                   </h1>
 
-                  <div className="bg-neutral-800 h-10 flex  overflow-hidden justify-center rounded-md ">
+                  <div className="bg-neutral-800 h-10 w-2/6 flex  overflow-hidden justify-center rounded-md ">
                     <button
                       className={` p-2 bg-neutral-800 w-full  hover:brightness-75 text-sm hover:bg-neutral-900 duration-200 ${
                         lang === "ES" ? "underline" : "brightness-50"
@@ -46,7 +44,7 @@ export default function ProjectDetail() {
                     </button>
                   </div>
                 </div>
-                <h3 className=" my-4 text-sm md:text-lg w-full   font-light text-neutral-400">
+                <h3 className="my-0 md:my-4 text-sm md:text-lg w-full   font-light text-neutral-400">
                   <i>
                     {lang === "ES"
                       ? project?.subtitle_es
@@ -66,7 +64,14 @@ export default function ProjectDetail() {
                 : project?.text_en || project?.text_es}
             </p>
           </div>
-        </div>
+        ) : (
+          <div className="md:w-2/6 lg:w-2/6 w-full  grid place-content-center">
+            <h2 className="md:text-2xl lg:text-4xl text-center font-bold">
+              {project?.title_es}
+            </h2>
+            <span className="text-center text-lg">{project?.year}</span>
+          </div>
+        )}
       </div>
     </Loading>
   );

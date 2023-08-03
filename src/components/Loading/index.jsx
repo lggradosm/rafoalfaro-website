@@ -1,12 +1,11 @@
 import loadingGif from "/images/loading.gif";
 export default function Loading({ children, loadCondition, className }) {
-  if (loadCondition)
-    return <div className={`animate-loadOpacity ${className}`}>{children}</div>;
+  if (loadCondition) return <>{children}</>;
   else
     return (
       <div className={className}>
         <div
-          className={`bg-black absolute top-0   w-full h-full flex justify-center items-center
+          className={`bg-black  absolute top-0   w-full h-full flex justify-center items-center
       } `}
         >
           <img

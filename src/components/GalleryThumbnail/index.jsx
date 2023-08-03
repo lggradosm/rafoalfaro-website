@@ -11,7 +11,7 @@ import { Mousewheel, Navigation, Zoom } from "swiper/modules";
 import "../../css/GalleryThumbnail.css";
 import Image from "../Loading/Image";
 export default function GalleryThumbnail({ images }) {
-  const MAX_IMAGES_THUMB = 20;
+  const MAX_IMAGES_THUMB = 10;
   const MIN_PROGRESS_TO_ACTIVE_NAV = 0.03;
   const NAV_BUTTON_INITIAL_STATE = { left: false, right: true };
   const [imageSelected, setImageSelected] = useState(0);
@@ -23,63 +23,37 @@ export default function GalleryThumbnail({ images }) {
     useState(NAV_BUTTON_INITIAL_STATE);
 
   const fullPageImage = useVisibility();
-  const body = document.getElementsByTagName("body")[0];
+  // const body = document.getElementsByTagName("body")[0];
   const thumSlideRef = useRef(null);
   const slideRef = useRef(null);
   const thumFullSlideRef = useRef(null);
 
   const fullPageImageShow = () => {
-    body.classList.add("overflow-hidden");
+    // body.classList.add("overflow-hidden");
+    thumFullSlideRef.current.swiper.slideTo(imageSelected);
+
     fullPageImage.show();
   };
   const fullPageImageHide = () => {
-    body.classList.remove("overflow-hidden");
+    // body.classList.remove("overflow-hidden");
+    slideRef.current.swiper.slideTo(imageSelected);
+
     fullPageImage.hide();
   };
 
-  const nextSlide = () => {
-    if (imageSelected <= images.length - 2)
-      setImageSelected((prev) => (prev = prev + 1));
-  };
-
-  const prevSlide = () => {
-    if (imageSelected > 0) setImageSelected((prev) => (prev = prev - 1));
-  };
-
-  const scrollSwiperMoveHandler = () => {
-    if (thumSlideRef.current.swiper.progress > MIN_PROGRESS_TO_ACTIVE_NAV) {
-      setNavButtonVisible({ left: true, right: true });
-    } else {
-      setNavButtonVisible({ left: false, right: true });
-    }
-    if (
-      thumSlideRef.current.swiper.progress >=
-      1 - MIN_PROGRESS_TO_ACTIVE_NAV
-    ) {
-      setNavButtonVisible({ left: true, right: false });
-    }
-  };
-
-  const scrollFullSwiperMoveHandler = () => {
-    if (thumFullSlideRef.current.swiper.activeIndex > images.length - 2) {
-      setNavFullScreenButtonsVisible({ left: true, right: false });
-    } else {
-      if (
-        thumFullSlideRef?.current.swiper.progress > MIN_PROGRESS_TO_ACTIVE_NAV
-      ) {
-        setNavFullScreenButtonsVisible({ left: true, right: true });
-      } else {
-        setNavFullScreenButtonsVisible({ left: false, right: true });
-      }
-    }
-  };
-
   useEffect(() => {
+    if (imageSelected > 0)
+      setNavFullScreenButtonsVisible((prev) => ({ ...prev, left: true }));
+    else {
+      setNavFullScreenButtonsVisible((prev) => ({ ...prev, left: false }));
+    }
+    if (imageSelected === images.length - 1) {
+      setNavFullScreenButtonsVisible((prev) => ({ ...prev, right: false }));
+    } else {
+      setNavFullScreenButtonsVisible((prev) => ({ ...prev, right: true }));
+    }
     thumSlideRef.current.swiper.slideTo(imageSelected);
-    thumFullSlideRef.current.swiper.slideTo(imageSelected);
     slideRef.current.swiper.slideTo(imageSelected);
-    scrollSwiperMoveHandler();
-    scrollFullSwiperMoveHandler();
   }, [imageSelected]);
 
   return (
@@ -89,45 +63,35 @@ export default function GalleryThumbnail({ images }) {
           <Swiper
             slidesPerView={1}
             direction={"horizontal"}
-            className="relative h-full  lg:h-[80vh]  select-none hover:cursor-grab"
+            className="relative h-full  lg:h-[80vh] flex justify-center items-center  select-none hover:cursor-grab"
             initialSlide={imageSelected}
             modules={[Navigation]}
             speed={600}
             onSlideChange={(e) => {
               setImageSelected(e.activeIndex);
             }}
-            onSliderMove={() => scrollFullSwiperMoveHandler()}
+            // onSliderMove={() => scrollFullSwiperMoveHandler()}
             navigation={{
               prevEl: ".full_prev",
               nextEl: ".full_next",
             }}
             ref={slideRef}
           >
-            {images.map((image, index) => (
+            {images?.map((image, index) => (
               <SwiperSlide
                 key={index}
                 onClick={() => setImageSelected(index)}
                 className="w-full h-[100%] flex justify-center items-center "
               >
-                <div
-                  className="absolute  z-40 h-full w-full "
-                  onClick={() => fullPageImageHide()}
-                />
-                <Image
-                  src={`${image}`}
-                  className={
-                    "w-[80%] h-auto 2xl:w-auto 2xl:h-full z-40 active:cursor-grab"
-                  }
-                />
-                {/* <img
+                <img
                   src={`${image}`}
                   alt=""
                   className="w-[80%] h-auto 2xl:w-auto 2xl:h-full z-40 active:cursor-grab"
-                /> */}
+                />
               </SwiperSlide>
             ))}
             <div
-              className={`z-40 absolute top-0 left-0 w-20 h-full flex justify-center items-center bg-transparent  ${
+              className={`z-20 absolute top-0 left-0 w-20 h-full flex justify-center items-center bg-transparent  ${
                 navFullScreenButtonsVisible.left ? "opacity-100" : "opacity-0"
               }`}
             >
@@ -135,7 +99,7 @@ export default function GalleryThumbnail({ images }) {
             </div>
 
             <div
-              className={`z-40 absolute flex justify-center items-center right-0 top-0 w-20 h-full bg-transparent ${
+              className={`absolute z-20   flex justify-center items-center right-0 top-0 w-20 h-full bg-transparent ${
                 navFullScreenButtonsVisible.right ? "opacity-100" : "opacity-0"
               }`}
             >
@@ -153,21 +117,20 @@ export default function GalleryThumbnail({ images }) {
         {/* thumbnails */}
         <Swiper
           breakpoints={{
-            0: { spaceBetween: 10, slidesPerView: MAX_IMAGES_THUMB },
-            768: { spaceBetween: 15, slidesPerView: MAX_IMAGES_THUMB },
-            1024: { spaceBetween: 4, slidesPerView: MAX_IMAGES_THUMB },
+            0: { spaceBetween: 5, slidesPerView: 6 },
+            768: { spaceBetween: 5, slidesPerView: 6 },
+            1024: { spaceBetween: 5, slidesPerView: MAX_IMAGES_THUMB },
           }}
           className="relative  !flex cursor-grab  bg-primaryColor w-full "
           navigation={{
             prevEl: ".prev",
             nextEl: ".next",
           }}
-          onSliderMove={() => scrollSwiperMoveHandler()}
           modules={[Navigation]}
           ref={thumSlideRef}
           speed={100}
         >
-          {images.map((image, index) => (
+          {images?.map((image, index) => (
             <SwiperSlide
               style={{ backgroundImage: `url(${image})` }}
               className={`relative  aspect-square bg-no-repeat bg-cover bg-center group`}
@@ -197,7 +160,7 @@ export default function GalleryThumbnail({ images }) {
           </div>
           <div
             className={`flex justify-center items-center ${
-              navButtonsVisible.right && images.length > MAX_IMAGES_THUMB
+              navButtonsVisible.right && images?.length > MAX_IMAGES_THUMB
                 ? "opacity-100"
                 : "opacity-0"
             } ease-out`}
@@ -208,13 +171,12 @@ export default function GalleryThumbnail({ images }) {
           </div>
         </Swiper>
       </div>
-
       <div
         className={`  ${
           fullPageImage.isVisible
-            ? "fullscreen-gallery__active"
-            : "fullscreen-gallery"
-        } duration-500  fixed h-screen  w-screen bg-black/90 top-0 bottom-0 right-0 z-30`}
+            ? "fullscreen-gallery__active z-50 fixed h-screen w-screen bg-black/90 top-0 bottom-0 right-0 "
+            : "fullscreen-gallery "
+        } duration-500 `}
       >
         <Swiper
           slidesPerView={1}
@@ -227,14 +189,13 @@ export default function GalleryThumbnail({ images }) {
           onSlideChange={(e) => {
             setImageSelected(e.activeIndex);
           }}
-          onSliderMove={() => scrollFullSwiperMoveHandler()}
           navigation={{
             prevEl: ".full_prev",
             nextEl: ".full_next",
           }}
           ref={thumFullSlideRef}
         >
-          {images.map((image, index) => (
+          {images?.map((image, index) => (
             <SwiperSlide
               key={index}
               onClick={() => setImageSelected(index)}
@@ -244,15 +205,12 @@ export default function GalleryThumbnail({ images }) {
                 className="absolute  z-40 h-full w-full "
                 onClick={() => fullPageImageHide()}
               />
-              <Image
-                src={`${image}`}
-                className="w-[80%] h-auto 2xl:w-auto 2xl:h-full z-40 active:cursor-grab"
-              />
-              {/* <img
+
+              <img
                 src={`${image}`}
                 alt=""
-                className="w-[80%] h-auto 2xl:w-auto 2xl:h-full z-40 active:cursor-grab"
-              /> */}
+                className="w-[80%] h-auto 2xl:w-auto 2xl:h-full  active:cursor-grab"
+              />
             </SwiperSlide>
           ))}
           <div
