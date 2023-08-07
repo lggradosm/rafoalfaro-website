@@ -11,7 +11,7 @@ export default function ProjectDetail() {
   return (
     <Loading loadCondition={project}>
       <div className=" page px-4 box-border  flex md:flex-row flex-col gap-8">
-        <div className="md:w-4/6 lg:w-4/6 w-full   ">
+        <div className="md:w-4/6 lg:w-4/6 w-full  ">
           <GalleryThumbnail images={project?.gallery} />
         </div>
         {project?.text_es && project?.subtitle_es ? (

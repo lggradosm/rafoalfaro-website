@@ -59,11 +59,11 @@ export default function GalleryThumbnail({ images }) {
   return (
     <div className="">
       <div className="flex flex-col gap-2 md:gap-4 items-center lg:gap-1">
-        <div className="relative w-full bg-primaryColor flex justify-center items-center">
+        <div className="relative h-[15rem] w-full md:h-[30rem] 2xl:h-[40rem] bg-primaryColor flex justify-center items-center ">
           <Swiper
             slidesPerView={1}
             direction={"horizontal"}
-            className="relative h-full  lg:h-[80vh] flex justify-center items-center  select-none hover:cursor-grab"
+            className="relative h-full !flex !justify-center !items-center  select-none hover:cursor-grab"
             initialSlide={imageSelected}
             modules={[Navigation]}
             speed={600}
@@ -81,12 +81,12 @@ export default function GalleryThumbnail({ images }) {
               <SwiperSlide
                 key={index}
                 onClick={() => setImageSelected(index)}
-                className="w-full h-[100%] flex justify-center items-center "
+                className="w-full  flex justify-center items-center    p-2"
               >
                 <img
                   src={`${image}`}
                   alt=""
-                  className="w-[80%] h-auto 2xl:w-auto 2xl:h-full z-40 active:cursor-grab"
+                  className="w-full h-auto  block  2xl:w-auto 2xl:h-full z-40 active:cursor-grab"
                 />
               </SwiperSlide>
             ))}
@@ -95,7 +95,7 @@ export default function GalleryThumbnail({ images }) {
                 navFullScreenButtonsVisible.left ? "opacity-100" : "opacity-0"
               }`}
             >
-              <ChevronLeftIcon className="full_prev w-16 text-white cursor-pointer hover:opacity-60 duration-200" />
+              <ChevronLeftIcon className="full_prev w-8  lg:w-16 text-white cursor-pointer hover:opacity-60 duration-200" />
             </div>
 
             <div
@@ -103,15 +103,15 @@ export default function GalleryThumbnail({ images }) {
                 navFullScreenButtonsVisible.right ? "opacity-100" : "opacity-0"
               }`}
             >
-              <ChevronRightIcon className="full_next w-16 text-white cursor-pointer hover:opacity-60 duration-200" />
+              <ChevronRightIcon className="full_next w-8  lg:w-16 text-white cursor-pointer hover:opacity-60 duration-200" />
             </div>
           </Swiper>
 
           <div
-            className="absolute bg-neutral-800 rounded-full right-5 bottom-5 group  z-10 duration-300  p-3 cursor-pointer"
+            className="absolute bg-neutral-800 rounded-full right-3 bottom-3 group  z-10 duration-300  p-3 cursor-pointer"
             onClick={() => fullPageImageShow()}
           >
-            <ArrowsPointingOutIcon className="w-6  group-hover:opacity-60 duration-300 text-white" />
+            <ArrowsPointingOutIcon className="w-4 lg:w-6  group-hover:opacity-60 duration-300 text-white" />
           </div>
         </div>
         {/* thumbnails */}
@@ -218,7 +218,7 @@ export default function GalleryThumbnail({ images }) {
               navFullScreenButtonsVisible.left ? "opacity-100" : "opacity-0"
             }`}
           >
-            <ChevronLeftIcon className="full_prev w-16 text-white cursor-pointer hover:opacity-60 duration-200" />
+            <ChevronLeftIcon className="full_prev w-8  lg:w-16 text-white cursor-pointer hover:opacity-60 duration-200" />
           </div>
 
           <div
@@ -226,13 +226,13 @@ export default function GalleryThumbnail({ images }) {
               navFullScreenButtonsVisible.right ? "opacity-100" : "opacity-0"
             }`}
           >
-            <ChevronRightIcon className="full_next w-16 text-white cursor-pointer hover:opacity-60 duration-200" />
+            <ChevronRightIcon className="full_next w-8  lg:w-16 text-white cursor-pointer hover:opacity-60 duration-200" />
           </div>
           <div
             className=" z-40 absolute  right-4 top-4 bg-transparent cursor-pointer"
             onClick={() => fullPageImageHide()}
           >
-            <XMarkIcon className="w-10 text-white hover:opacity-60 duration-200" />
+            <XMarkIcon className="w-8  lg:w-16 text-white hover:opacity-60 duration-200" />
           </div>
         </Swiper>
       </div>

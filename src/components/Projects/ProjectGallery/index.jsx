@@ -10,21 +10,6 @@ export default function ProjectGallery({ selectedCategory }) {
   const externalRef = useRef();
   const [isIntersecting, setIsIntersecting] = useState(false);
   const { projects, nextProjectPage } = useProjectFetch();
-  // const { isNearScreen } = useNearScreen({
-  //   once: false,
-  //   externalRef,
-  // });
-
-  // const handleNextPage = () => {
-  //   // duplicate();
-  //   setPagination((prev) => prev + 1);
-  //   console.log(pagination);
-  // };
-  // const debounceHandleNextPage = useCallback(debounce(handleNextPage, 300), []);
-
-  // useEffect(() => {
-  //   if (isNearScreen) debounceHandleNextPage();
-  // }, [debounceHandleNextPage, isNearScreen]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,7 +25,6 @@ export default function ProjectGallery({ selectedCategory }) {
   }, []);
 
   useEffect(() => {
-    console.log(isIntersecting);
     if (isIntersecting) {
       nextProjectPage(projects.slice(-1)[0]);
     }

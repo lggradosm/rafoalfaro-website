@@ -1,15 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --navbar--height: 3.5rem;
+/* @font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Light.ttf");
+  font-weight: 300;
 }
-body,
-html {
-  @apply bg-black box-border text-white;
-}
-
 @font-face {
   font-family: "Manrope";
   src: url("/fonts/Manrope-Regular.ttf");
@@ -24,11 +20,14 @@ html {
   font-family: "Manrope";
   src: url("/fonts/Manrope-Bold.ttf");
   font-weight: bold;
+} */
+
+:root {
+  --navbar--height: 3.5rem;
 }
-@font-face {
-  font-family: "Manrope";
-  src: url("/fonts/Manrope-Light.ttf");
-  font-weight: 300;
+body,
+html {
+  @apply bg-black box-border text-white;
 }
 
 .page {

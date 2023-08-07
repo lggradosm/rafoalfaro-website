@@ -31,7 +31,7 @@ export const getProjectsPagination = async (project) => {
   const q = query(
     col,
     orderBy("created_at", "desc"),
-    startAfter(project.created_at),
+    startAfter(project?.created_at),
     limit(amount)
   );
   return await getDocs(q);
