@@ -21,6 +21,7 @@ export default function Studio() {
         <CollageImage
           size={"vertical"}
           type="text"
+          signed={true}
           text={`Somos Rafo Alfaro | Estudio Creativo. 
       Como oficina de arquitectura y diseño de interiores, nuestro objetivo es mejorar la calidad de vida de nuestros clientes y usuarios a través de nuestros conceptos, proyectos y edificaciones; en medio de una permanente búsqueda de la perfección y la simplicidad.`}
         />

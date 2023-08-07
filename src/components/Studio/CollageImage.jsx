@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-
+import firma from "/images/firma.png";
 export default function CollageImage({
   image,
   type = "image",
@@ -7,6 +7,7 @@ export default function CollageImage({
   name,
   position,
   size,
+  signed = false,
 }) {
   const videoRef = useRef(null);
 
@@ -65,8 +66,9 @@ export default function CollageImage({
         </div>
       )}
       {type === "text" && (
-        <span className="whitespace-pre-line p-10 h-full absolute left-0 top-0 bg-black text-white text-[.9em] text-center sm:text-sm lg:text-[1em] lg:leading-relaxed leading-loose  flex justify-center items-center">
+        <span className="whitespace-pre-line p-10 h-full absolute left-0 top-0 gap-4 md:gap-10 bg-black text-white text-[.9em] text-center sm:text-sm lg:text-[1em] lg:leading-relaxed leading-loose  flex flex-col justify-center items-center">
           {text}
+          {signed && <img src={firma} alt="" className="w-44" />}
         </span>
       )}
       {type === "team" && (
