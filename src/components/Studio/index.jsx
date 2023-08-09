@@ -12,12 +12,17 @@ import reel4 from "../../assets/videos/reel4.mp4";
 export default function Studio() {
   return (
     <div className="relative loaded-page__animation">
-      <div
-        style={{ backgroundImage: `url(${image})` }}
-        className=" w-full bg-no-repeat bg-cover bg-center h-[50vh]"
-      ></div>
+      <div className=" w-full bg-no-repeat bg-cover bg-center">
+        <img src={image} alt="" className="h-full w-full" />
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5  gap-1 p-1">
-        <CollageImage size={"bigSquare"} image={rafo_image} />
+        <CollageImage
+          size={"bigSquare"}
+          image={rafo_image}
+          type="boss"
+          name={"Rafo Alfaro"}
+          position={"Director Creativo"}
+        />
         <CollageImage
           size={"vertical"}
           type="text"

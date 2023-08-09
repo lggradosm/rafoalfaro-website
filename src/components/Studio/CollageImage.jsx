@@ -72,7 +72,18 @@ export default function CollageImage({
         </span>
       )}
       {type === "team" && (
-        <span className="flex w-fit absolute bottom-0 left-0 bg-black p-2 min-w-[100px] text-white text-[.8em] sm:text-[.65em] md:text-xs  whitespace-nowrap  overflow-hidden  font-bold tracking-wide">
+        <span className="flex w-fit absolute bottom-0 left-0 bg-black p-2 min-w-[100px] text-white sm:text-sm md:text-md    overflow-hidden  font-bold tracking-wide">
+          {name}
+          <span
+            className={`font-light w-fit before:content-[""] before:h-full before:w-0.5 before:mx-2 before:bg-white  before:inline-block flex`}
+          >
+            {position}
+          </span>
+        </span>
+      )}
+
+      {type === "boss" && (
+        <span className="flex w-fit absolute bottom-0 left-0 bg-black p-2 min-w-[100px] text-white text-xl  whitespace-nowrap  overflow-hidden  font-bold tracking-wide">
           {name}
           <span
             className={`font-light w-fit before:content-[""] before:h-full before:w-0.5 before:mx-2 before:bg-white  before:inline-block flex`}

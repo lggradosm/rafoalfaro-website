@@ -12,9 +12,7 @@ export default function Projects() {
   return (
     <div className="min-w-[200px]  ">
       <div className="h-full ">
-        <div className="h-[50vh]">
-          <ProjectCover />
-        </div>
+        <ProjectCover />
         <ProjectNav
           selected={selectedCategory}
           onclick={changeSelectedCategory}

@@ -8,7 +8,9 @@ import Footer from "./components/Footer";
 import { HomeContextProvider } from "./contexts/HomeProvider";
 import { ProjectContextProvider } from "./contexts/ProjectProvider";
 import ProjectDetail from "./components/Projects/ProjectDetail";
+
 function App() {
+  const helmetContext = {};
   return (
     <BrowserRouter>
       <main className="min-h-[calc(100vh-7rem)]">

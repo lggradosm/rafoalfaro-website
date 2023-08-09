@@ -26,7 +26,7 @@ const equipoDummy = [
   },
   {
     id: 5,
-    name: "Carlos Zapata",
+    name: "Cos Zapata",
     position: "Arquitecto",
     image: `/images/studio/Carlos-Zapata.webp`,
   },
@@ -45,7 +45,7 @@ const equipoDummy = [
   {
     id: 8,
     name: "César Toribio",
-    position: "Asistente de Diseño",
+    position: "Arquitecto",
     image: `/images/studio/Cesar-Toribio.webp`,
   },
   {
@@ -57,7 +57,7 @@ const equipoDummy = [
   {
     id: 10,
     name: "Laura Dávila",
-    position: "Asistente de Diseño",
+    position: "Arquitecta",
     image: `/images/studio/Laura-Davila.webp`,
   },
   {
@@ -99,19 +99,19 @@ const equipoDummy = [
   {
     id: 18,
     name: "Alonso Arroyo",
-    position: "Asistente de Arquitectura",
+    position: "Arquitecto",
     image: `/images/studio/alonso.webp`,
   },
   {
     id: 19,
     name: "Nashla Cuba",
-    position: "Asistente de Arquitectura",
+    position: "Arquitecta",
     image: `/images/studio/nashla.webp`,
   },
   {
     id: 20,
     name: "Carlos Miranda",
-    position: "Asistente de Arquitectura",
+    position: "Arquitecto",
     image: `/images/studio/carlos-miranda.webp`,
   },
 ];

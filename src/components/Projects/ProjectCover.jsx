@@ -5,11 +5,13 @@ export default function ProjectCover() {
   const { coverProject } = useProjectContext();
 
   return (
-    <Loading loadCondition={coverProject} className={"relative w-full h-full"}>
-      <div
-        style={{ backgroundImage: `url(${coverProject?.image_url})` }}
-        className=" w-full bg-no-repeat bg-cover bg-center h-full bg-black"
-      ></div>
+    <Loading
+      loadCondition={coverProject}
+      className={"relative w-full h-[40rem]"}
+    >
+      <div className=" w-full h-full bg-no-repeat bg-cover bg-center">
+        <img src={coverProject?.image_url} alt="" className="h-full w-full" />
+      </div>
     </Loading>
   );
 }

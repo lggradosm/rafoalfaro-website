@@ -3,13 +3,28 @@ import { useParams } from "react-router-dom";
 import useGetProjectByIdFetch from "../../../hooks/useGetProjectByIdFetch";
 import Loading from "../../Loading";
 import GalleryThumbnail from "../../GalleryThumbnail";
-
+import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function ProjectDetail() {
   const { id } = useParams();
   const [lang, setLang] = useState("ES");
   const { project } = useGetProjectByIdFetch(id);
+  const route = useLocation().pathname;
   return (
     <Loading loadCondition={project}>
+      {project && (
+        <header>
+          <Helmet>
+            <meta property="og:url" content={route} />
+
+            <meta property="og:title" content={project.title_es} />
+            <meta property="og:description" content={project.subtitle_es} />
+            <meta property="og:type" content="article" />
+            <meta property="og:image" content={project.featured_image} />
+          </Helmet>
+        </header>
+      )}
+
       <div className=" page px-4 box-border  flex md:flex-row flex-col gap-8">
         <div className="md:w-4/6 lg:w-4/6 w-full  ">
           <GalleryThumbnail images={project?.gallery} />
