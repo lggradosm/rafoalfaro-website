@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import useVisibility from "@hooks/useVisibility";
 import {
   ChevronRightIcon,
@@ -7,10 +7,10 @@ import {
   ArrowsPointingOutIcon,
 } from "@heroicons/react/24/outline";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel, Navigation, Zoom } from "swiper/modules";
+import { Mousewheel, Navigation, Keyboard } from "swiper/modules";
 import "../../css/GalleryThumbnail.css";
 import Image from "../Loading/Image";
-export default function GalleryThumbnail({ images }) {
+export default function GalleryThumbnail({ images, isVisible, hide, show }) {
   const MAX_IMAGES_THUMB = 10;
   const MIN_PROGRESS_TO_ACTIVE_NAV = 0.03;
   const NAV_BUTTON_INITIAL_STATE = { left: false, right: true };
@@ -22,7 +22,7 @@ export default function GalleryThumbnail({ images }) {
   const [navFullScreenButtonsVisible, setNavFullScreenButtonsVisible] =
     useState(NAV_BUTTON_INITIAL_STATE);
 
-  const fullPageImage = useVisibility();
+  const { fullPageImage } = useVisibility();
   // const body = document.getElementsByTagName("body")[0];
   const thumSlideRef = useRef(null);
   const slideRef = useRef(null);
@@ -32,13 +32,13 @@ export default function GalleryThumbnail({ images }) {
     // body.classList.add("overflow-hidden");
     thumFullSlideRef.current.swiper.slideTo(imageSelected);
 
-    fullPageImage.show();
+    show();
   };
   const fullPageImageHide = () => {
     // body.classList.remove("overflow-hidden");
     slideRef.current.swiper.slideTo(imageSelected);
 
-    fullPageImage.hide();
+    hide();
   };
 
   useEffect(() => {
@@ -58,15 +58,16 @@ export default function GalleryThumbnail({ images }) {
 
   return (
     <div className="">
-      <div className="flex flex-col gap-2 md:gap-4 items-center lg:gap-1">
-        <div className="relative h-[15rem] w-full md:h-[30rem] 2xl:h-[40rem] bg-primaryColor flex justify-center items-center ">
+      <div className="flex flex-col gap-2 md:gap-4 items-center lg:gap-1 ">
+        <div className="relative  w-full  bg-primaryColor flex justify-center items-center ">
           <Swiper
             slidesPerView={1}
             direction={"horizontal"}
-            className="relative h-full !flex !justify-center !items-center  select-none hover:cursor-grab"
+            className="relative h-[calc(100vh-235px)] !flex !justify-center !items-center  select-none hover:cursor-grab"
             initialSlide={imageSelected}
             modules={[Navigation]}
             speed={600}
+            onClick={() => fullPageImageShow()}
             onSlideChange={(e) => {
               setImageSelected(e.activeIndex);
             }}
@@ -86,7 +87,7 @@ export default function GalleryThumbnail({ images }) {
                 <img
                   src={`${image}`}
                   alt=""
-                  className="w-full h-auto  block  2xl:w-auto 2xl:h-full z-40 active:cursor-grab"
+                  className="w-full h-auto md:w-auto md:h-full  block  2xl:w-auto 2xl:h-full z-40 active:cursor-grab"
                 />
               </SwiperSlide>
             ))}
@@ -114,14 +115,14 @@ export default function GalleryThumbnail({ images }) {
             <ArrowsPointingOutIcon className="w-4 lg:w-6  group-hover:opacity-60 duration-300 text-white" />
           </div>
         </div>
-        {/* thumbnails */}
+        {/* THUMBNAILS */}
         <Swiper
           breakpoints={{
-            0: { spaceBetween: 5, slidesPerView: 6 },
+            0: { spaceBetween: 5, slidesPerView: 4 },
             768: { spaceBetween: 5, slidesPerView: 6 },
             1024: { spaceBetween: 5, slidesPerView: MAX_IMAGES_THUMB },
           }}
-          className="relative  !flex cursor-grab  bg-primaryColor w-full "
+          className="relative h-[100px] aspect-square !flex cursor-grab  bg-primaryColor w-full "
           navigation={{
             prevEl: ".prev",
             nextEl: ".next",
@@ -133,7 +134,7 @@ export default function GalleryThumbnail({ images }) {
           {images?.map((image, index) => (
             <SwiperSlide
               style={{ backgroundImage: `url(${image})` }}
-              className={`relative  aspect-square bg-no-repeat bg-cover bg-center group`}
+              className={`relative h-[100px] w-24 aspect-square bg-no-repeat bg-cover bg-center group`}
               onClick={() => setImageSelected(index)}
               key={index}
             >
@@ -173,18 +174,20 @@ export default function GalleryThumbnail({ images }) {
       </div>
       <div
         className={`  ${
-          fullPageImage.isVisible
+          isVisible
             ? "fullscreen-gallery__active z-50 fixed h-screen w-screen bg-black/90 top-0 bottom-0 right-0 "
             : "fullscreen-gallery "
         } duration-500 `}
       >
+        {/* FULLSCREEN */}
         <Swiper
           slidesPerView={1}
           direction={"horizontal"}
           className="relative  w-full h-full select-none "
           initialSlide={imageSelected}
-          modules={[Navigation, Mousewheel]}
+          modules={[Navigation, Mousewheel, Keyboard]}
           mousewheel={true}
+          keyboard={true}
           speed={600}
           onSlideChange={(e) => {
             setImageSelected(e.activeIndex);
@@ -198,18 +201,17 @@ export default function GalleryThumbnail({ images }) {
           {images?.map((image, index) => (
             <SwiperSlide
               key={index}
-              onClick={() => setImageSelected(index)}
-              className="w-full h-[100%] flex justify-center items-center "
+              className=" md:w-full md:h-auto flex justify-center items-center "
             >
               <div
-                className="absolute  z-40 h-full w-full "
+                className="absolute  z-30 h-full w-full "
                 onClick={() => fullPageImageHide()}
               />
 
               <img
                 src={`${image}`}
                 alt=""
-                className="w-[80%] h-auto 2xl:w-auto 2xl:h-full  active:cursor-grab"
+                className="w-full h-auto md:w-auto md:h-full0 z-40  2xl:h-full  active:cursor-grab"
               />
             </SwiperSlide>
           ))}

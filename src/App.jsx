@@ -8,12 +8,16 @@ import Footer from "./components/Footer";
 import { HomeContextProvider } from "./contexts/HomeProvider";
 import { ProjectContextProvider } from "./contexts/ProjectProvider";
 import ProjectDetail from "./components/Projects/ProjectDetail";
-
+import useProjectsReducer from "./hooks/useProjectsReducer.js";
+import { useEffect } from "react";
 function App() {
-  const helmetContext = {};
+  const projectsReducer = useProjectsReducer();
+  useEffect(() => {
+    projectsReducer.getProjects();
+  }, []);
   return (
     <BrowserRouter>
-      <main className="min-h-[calc(100vh-7rem)]">
+      <main className="min-h-[calc(100vh-130px)]">
         <Navbar />
         <Routes>
           <Route

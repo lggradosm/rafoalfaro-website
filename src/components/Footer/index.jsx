@@ -6,7 +6,7 @@ import linkedin from "../../assets/icons/linkedin.svg";
 
 export default function Footer() {
   return (
-    <footer className="w-full flex justify-between items-center h-12 px-2   ">
+    <footer className="w-full flex justify-between items-center h-[50px]  px-[5px]   ">
       <div className="w-full  flex flex-row justify-between ">
         <div className=" flex  flex-col  justify-center  gap-1 text-white">
           <p className="text-[.6em] md:text-xs ">

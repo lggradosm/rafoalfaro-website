@@ -26,7 +26,7 @@ const equipoDummy = [
   },
   {
     id: 5,
-    name: "Cos Zapata",
+    name: "Carlos Zapata",
     position: "Arquitecto",
     image: `/images/studio/Carlos-Zapata.webp`,
   },
