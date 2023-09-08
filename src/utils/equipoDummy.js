@@ -1,119 +1,84 @@
-const equipoDummy = [
-  {
-    id: 1,
+const equipoDummy = {
+  "Marykarly":{
+    id: 0,
     name: "Marykarly Reyes",
     position: "Jefe de Proyectos de Interiorismo",
     image: `/images/studio/Marykarly-Reyes.webp`,
   },
-
-  {
-    id: 2,
-    name: "Gean Horna",
-    position: "Diseñador de Interiores",
-    image: `/images/studio/Gean-Horna.webp`,
-  },
-  {
-    id: 3,
+  "Anthony":{
+    id: 1,
     name: "Anthony Elías",
     position: "Diseñador de Interiores",
     image: `/images/studio/Anthony-Elias.webp`,
   },
-  {
-    id: 4,
+  "Diego":{
+    id: 2,
     name: "Diego Uriol",
     position: "Jefe de Proyectos de Arquitectura",
     image: `/images/studio/Diego-Uriol.webp`,
   },
+  "Carlos Zapata":
   {
-    id: 5,
+    id: 3,
     name: "Carlos Zapata",
     position: "Arquitecto",
     image: `/images/studio/Carlos-Zapata.webp`,
   },
-  {
-    id: 6,
-    name: "Johan Ruíz",
+  "Johan":{
+    id: 4,
+    name: "Johan Ruiz",
     position: "Arquitecto",
     image: `/images/studio/Johan-Ruiz.webp`,
   },
-  {
-    id: 7,
-    name: "Carlos Castañeda",
-    position: "Arquitecto",
-    image: `/images/studio/Carlos-Castaneda.webp`,
-  },
-  {
-    id: 8,
+  "Cesar": {
+    id: 5,
     name: "César Toribio",
     position: "Arquitecto",
     image: `/images/studio/Cesar-Toribio.webp`,
   },
-  {
-    id: 9,
-    name: "Leidy Mendoza",
-    position: "Arquitecta",
-    image: `/images/studio/Leidy-Mendoza.webp`,
-  },
-  {
-    id: 10,
+  "Laura": {
+    id: 6,
     name: "Laura Dávila",
     position: "Arquitecta",
     image: `/images/studio/Laura-Davila.webp`,
   },
-  {
-    id: 11,
+  "Gabriel":{
+    id: 7,
     name: "Gabriel Grados",
     position: "Visualizador Arquitectónico",
     image: `/images/studio/Gabriel.webp`,
   },
-  {
-    id: 13,
-    name: "Diego Paredes",
-    position: "Ingeniero Civil",
-    image: `/images/studio/Diego-Paredes.webp`,
-  },
-  {
-    id: 14,
-    name: "Ana Paula Ludeña",
-    position: "Arquitecta",
-    image: `/images/studio/Ana-Paula-Ludena.webp`,
-  },
-  {
-    id: 15,
+  "Ghelenn":{
+    id: 9,
     name: "Ghelenn Sánchez",
     position: "Ingeniera Civil",
     image: `/images/studio/Ghelenn-Sanchez.webp`,
   },
-  {
-    id: 16,
-    name: "Jhon Martell",
-    position: "Asistente de Supervisión",
-    image: `/images/studio/Jhon-Martell.webp`,
-  },
-  {
-    id: 17,
-    name: "Yelina Castro",
-    position: "Asistente de Ingeniería",
-    image: `/images/studio/Yelina-Castro.webp`,
-  },
-  {
-    id: 18,
+  "Alonso":{
+    id: 10, 
     name: "Alonso Arroyo",
     position: "Arquitecto",
     image: `/images/studio/alonso.webp`,
   },
-  {
-    id: 19,
+  "Nashla":{
+    id: 11,
     name: "Nashla Cuba",
     position: "Arquitecta",
     image: `/images/studio/nashla.webp`,
   },
-  {
-    id: 20,
+  "Carlos Miranda":{
+    id: 12,
     name: "Carlos Miranda",
     position: "Arquitecto",
     image: `/images/studio/carlos-miranda.webp`,
   },
-];
+  "Valeria Ruiz":{
+    id: 13,
+    name: "Valeria Ruiz",
+    position: "Asistente de Diseño",
+    image: `/images/studio/valeria.webp`,
+  },
+}
+
 
 export default equipoDummy;

@@ -40,7 +40,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed z-20 h-navbar top-0 left-0 w-screen    duration-300 ease-[cubic-bezier(.42,-0.01,.47,1)]  ${
+      className={`fixed z-20 h-navbar top-0 left-0 w-full    duration-300 ease-[cubic-bezier(.42,-0.01,.47,1)]  ${
         transparentNavbar ? "bg-transparent" : " ra_navbar"
       }`}
     >

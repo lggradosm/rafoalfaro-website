@@ -5,13 +5,13 @@ import {
 } from "../services/ProjectService";
 export default function useProjectFetch() {
   const [projects, setProjects] = useState([]);
-  const [finished, setFinished] = useState(false);
   const getProjects = () => {
     return getProjectsGallery().then((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
+      console.log(data)
       setProjects(data);
     });
   };

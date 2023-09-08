@@ -1,15 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useProjectContext } from "../../../contexts/ProjectProvider";
+import {  useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import debounce from "just-debounce-it";
 
 import Image from "../../Loading/Image";
-import useProjectFetch from "../../../hooks/useProjectFetch";
 import useProjectReducer from "../../../hooks/useProjectsReducer";
 export default function ProjectGallery({ selectedCategory }) {
   const externalRef = useRef(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
-  // const { projects, nextProjectPage } = useProjectFetch();
   const { projects, nextProjectPage } = useProjectReducer();
   useEffect(() => {
     const observer = new IntersectionObserver(

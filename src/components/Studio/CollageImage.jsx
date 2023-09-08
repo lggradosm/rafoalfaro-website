@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import firma from "/images/firma.png";
 export default function CollageImage({
   image,
@@ -8,9 +8,9 @@ export default function CollageImage({
   position,
   size,
   signed = false,
+  className
 }) {
   const videoRef = useRef(null);
-
   const sizeClass = {
     bigSquare: " lg:col-span-2 lg:row-span-2 ",
     horizontal: " lg:col-span-2  row-span-1  lg:aspect-auto",
@@ -26,22 +26,18 @@ export default function CollageImage({
     videoRef?.current?.play();
   };
 
+  
+
   useEffect(() => {
     attemptPlay();
+    
   }, []);
+
+
   return (
-    // <div
-    //   className={`relative col-span-1 w-full h-full row-span-1 aspect-square bg-cover ${
-    //     isSquare ? "!aspect-square" : "sm:!aspect-video lg:!aspect-auto"
-    //   } ${"lg:!col-span-" + cols} ${"lg:!row-span-" + rows} ${
-    //     rows > cols ? "row-span-1 " : ""
-    //   }
-    // // ${cols > rows ? "sm:col-span-" + cols : ""} ${
-    //     type === "image" ? "bg-center" : ""
-    //   } ${type === "text" ? "flex__center" : ""}`}
-    // >
+  
     <div
-      className={`relative w-full h-full col-span-1 row-span-1 aspect-square ${sizeClass[size]}`}
+      className={`relative w-full h-full col-span-1 row-span-1 aspect-square ${sizeClass[size]} ${className}`}
     >
       {type === "video" ? (
         <video
@@ -51,9 +47,9 @@ export default function CollageImage({
           autoPlay
           muted
           className="object-center object-cover h-full w-full"
+          src={image}
         >
-          <source src={image} type="video/mp4" />
-          Your browser does not support the video tag.
+          
         </video>
       ) : (
         <div className="h-full w-full">

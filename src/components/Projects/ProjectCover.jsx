@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { useProjectContext } from "../../contexts/ProjectProvider";
 import image from "/images/studio/home-nosotros.webp";
 export default function ProjectCover() {
   return (

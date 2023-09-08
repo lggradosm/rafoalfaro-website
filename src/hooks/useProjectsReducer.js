@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { init, selectProjects } from "../app/reducers/projectsSlice";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import {
   getProjectsGallery,
   getProjectsPagination,
@@ -26,6 +26,7 @@ export default function useProjectReducer() {
         ...doc.data(),
         id: doc.id,
       }));
+      console.log([...projects, ...data])
       dispatch(init([...projects, ...data]));
     });
   };
