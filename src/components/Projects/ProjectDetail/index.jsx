@@ -5,10 +5,12 @@ import Loading from "../../Loading";
 import GalleryThumbnail from "../../GalleryThumbnail";
 import useVisibility from "../../../hooks/useVisibility";
 import ReactGa from 'react-ga4'
+import {getProjectByUrl} from "../../../services/ProjectService"
 export default function ProjectDetail() {
   const { id } = useParams();
   const [lang, setLang] = useState("ES");
-  const { project } = useGetProjectByIdFetch(id);
+  const project = getProjectByUrl(id)
+  // const { project } = useGetProjectByIdFetch(id);
   const { isVisible, hide, show } = useVisibility();
   const navigate = useNavigate();
   const handleUserKeyPress = useCallback((event) => {

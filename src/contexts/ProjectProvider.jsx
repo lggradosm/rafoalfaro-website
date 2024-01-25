@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getCover, getProjectsGallery } from "../services/ProjectService";
+import { projects as allProjects } from "../utils/Projects";
 const ProjectContext = createContext();
 
 export function ProjectContextProvider({ children }) {
@@ -7,15 +8,14 @@ export function ProjectContextProvider({ children }) {
   const [projects, setProjects] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    Promise.all([getCover(), getProjectsGallery()]).then(
-      ([coverSnapshot, projectSnapshot]) => {
+    setProjects(allProjects)
+    Promise.all([getCover()]).then(
+      ([coverSnapshot]) => {
         const data = coverSnapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
         }));
-        const projectData = projectSnapshot
         setCoverProject(data[0]);
-        setProjects(projectData);
         setLoaded(true);
       }
     );

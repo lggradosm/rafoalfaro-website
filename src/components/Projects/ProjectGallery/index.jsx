@@ -36,16 +36,16 @@ export default function ProjectGallery({ selectedCategory }) {
         {projects?.map((item,index) => (
           <div
             key={index}
-            style={{ backgroundImage: `url(${item.featuredImage})` }}
+            style={{ backgroundImage: `url(${item.featured_image})`, minHeight:'300px' }}
             className="w-full overflow-hidden relative saturate-0  aspect-square  group hover:saturate-100 bg-cover bg-center bg-no-repeat  animate-scaleProjectGallery "
           >
             <NavLink
               to={item.url}
-              style={{ backgroundImage: `url(${item.featuredImage})` }}
+              style={{ backgroundImage: `url(${item.featured_image})` }}
               className={`cursor-pointer  `}
             >
               <div className="absolute h-full w-full bg-black/[85%] flex items-center group-hover:opacity-0  duration-[350ms] ease-[cubic-bezier(.42,-0.01,.47,1)]  ">
-                <Image className=" w-full h-auto " src={item.sketchImage} />
+                <Image className=" w-full h-auto " src={item.sketch_image} />
 
                 {/* <img
                   src={item.sketch_image}
@@ -54,7 +54,7 @@ export default function ProjectGallery({ selectedCategory }) {
                 /> */}
                 <div className="w-fit absolute bottom-0 group-hover:-bottom-10 duration-[350ms] ease-[cubic-bezier(.42,-0.01,.47,1)]  text-center bg-black p-3 ">
                   <h3 className="text-white text-[.55em] sm:text-xs lg:text-[.95em] 2xl:text-[.8em] font-manrope font-bold -tracking-tight">
-                    {item.titleEs}
+                    {item.title_es}
                   </h3>
                 </div>
               </div>

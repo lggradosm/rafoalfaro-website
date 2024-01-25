@@ -7,16 +7,16 @@ export function HomeContextProvider({ children }) {
   const [lastProjects, setLastProjects] = useState([]);
   const [covers, setCovers] = useState([]);
   const [loaded, setLoaded] = useState(false);
-
+  
   useEffect(() => {
-    Promise.all([getLastProjects(), getCovers()]).then(
-      ([projectsSnapshot, coversSnapshot]) => {
-        const projectsData = projectsSnapshot
+    setLastProjects(getLastProjects())
+    console.log(getLastProjects())
+    Promise.all([ getCovers()]).then(
+      ([ coversSnapshot]) => {
         const coversData = coversSnapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
         }));
-        setLastProjects(projectsData);
         setCovers(coversData);
         setLoaded(true);
       }

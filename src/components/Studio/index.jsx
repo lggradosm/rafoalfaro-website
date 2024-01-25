@@ -111,12 +111,12 @@ export default function Studio() {
           name={equipoDummy["Ghelenn"].name}
           position={equipoDummy["Ghelenn"].position}
         />
-        <CollageImage
+        {/* <CollageImage
           image={equipoDummy["Gabriel"].image}
           type="team"
           name={equipoDummy["Gabriel"].name}
           position={equipoDummy["Gabriel"].position}
-        />
+        /> */}
         <CollageImage
           image={equipoDummy["Nashla"].image}
           type="team"
