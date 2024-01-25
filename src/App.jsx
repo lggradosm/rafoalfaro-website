@@ -10,14 +10,19 @@ import { ProjectContextProvider } from "./contexts/ProjectProvider";
 import ProjectDetail from "./components/Projects/ProjectDetail";
 import useProjectsReducer from "./hooks/useProjectsReducer.js";
 import { useEffect } from "react";
+import ReactGa from 'react-ga4'
+import { HelmetProvider } from "react-helmet-async";
 function App() {
   const projectsReducer = useProjectsReducer();
+  ReactGa.initialize(import.meta.env.VITE_GOOGLE_ANALYTICS_ID)
   useEffect(() => {
     projectsReducer.getProjects();
   }, []);
+
   return (
     <BrowserRouter>
-      <main className="min-h-[calc(100vh-130px)]">
+    <HelmetProvider>
+    <main className="min-h-[calc(100vh-130px)]">
         <Navbar />
         <Routes>
           <Route
@@ -43,6 +48,8 @@ function App() {
         </Routes>
       </main>
       <Footer />
+    </HelmetProvider>
+     
     </BrowserRouter>
   );
 }

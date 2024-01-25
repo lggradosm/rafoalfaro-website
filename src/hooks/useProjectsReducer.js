@@ -12,21 +12,14 @@ export default function useProjectReducer() {
 
   const getProjects = async () => {
     const snapshot = await getProjectsGallery();
-    const data = snapshot.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
+    const data = snapshot
     dispatch(init(data));
     setFinished(true);
   };
 
   const nextProjectPage = (page) => {
     getProjectsPagination(page).then((snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      console.log([...projects, ...data])
+      const data = snapshot
       dispatch(init([...projects, ...data]));
     });
   };

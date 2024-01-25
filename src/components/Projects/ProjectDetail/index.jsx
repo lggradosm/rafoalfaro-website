@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import  { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useGetProjectByIdFetch from "../../../hooks/useGetProjectByIdFetch";
 import Loading from "../../Loading";
 import GalleryThumbnail from "../../GalleryThumbnail";
 import useVisibility from "../../../hooks/useVisibility";
+import ReactGa from 'react-ga4'
 export default function ProjectDetail() {
   const { id } = useParams();
   const [lang, setLang] = useState("ES");
@@ -22,8 +23,15 @@ export default function ProjectDetail() {
     };
   }, [isVisible]);
 
+  useEffect(()=> {
+    if(project){
+      ReactGa.send({ hitType: "pageview", page: window.location.pathname, title: project.title_es });
+    }
+  }, [project])
+
   return (
     <Loading loadCondition={project}>
+      
       <div className=" page px-4 box-border  flex md:flex-row flex-col gap-8">
         <div className="md:w-4/6 lg:w-4/6 w-full  ">
           <GalleryThumbnail

@@ -4,13 +4,18 @@ import CollageImage from "./CollageImage";
 import equipoDummy from "../../utils/equipoDummy";
 import infraestructuraDummy from "../../utils/infraestructuraDummy";
 import reel2 from "../../assets/videos/reel2.mp4";
-import reel3 from "../../assets/videos/reel3.mp4";
+// import reel3 from "../../assets/videos/reel3.mp4";
 import reel1 from "../../assets/videos/reel1.mp4";
 import reel4 from "../../assets/videos/reel4.mp4";
-
+import { useEffect } from "react";
+import ReactGa from 'react-ga4'
 export default function Studio() {
+  useEffect(()=> {
+    ReactGa.send({ hitType: "pageview", page: window.location.pathname, title: "Estudio" });
+  }, [])
   return (
     <div className="relative loaded-page__animation">
+
       <div className=" w-full bg-no-repeat bg-cover bg-center">
         <img src={image} alt="" className="h-full w-full" />
       </div>
@@ -35,29 +40,29 @@ export default function Studio() {
           type="text"
           text={`Nosotros creemos en el poder de la tecnología para poder llevar nuestros diseños y su impacto en el usuario al siguiente nivel. Por eso dentro de nuestros procesos hay un espacio destinado a la interacción inmersiva con los proyectos a través de la realidad virtual, una experiencia de 360 grados en la que nuestros clientes puedan sentir el espacio que habitarán, ser conscientes de los efectos que buscamos plasmar y reconocer los materiales y texturas que darán vida a nuestros trazos.`}
         />
-        <CollageImage
+        {/* <CollageImage
           image={equipoDummy["Diego"].image}
           type="team"
           name={equipoDummy["Diego"].name}
           position={equipoDummy["Diego"].position}
-        />
-         <CollageImage
+        /> */}
+         {/* <CollageImage
           image={infraestructuraDummy[4]}
           center
           size={"horizontal"}
-        />
+        /> */}
 
-
+{/* 
         <CollageImage
           image={equipoDummy["Johan"].image}
           type="team"
           name={equipoDummy["Johan"].name}
           position={equipoDummy["Johan"].position}
         />
-                <CollageImage image={infraestructuraDummy[3]} center={true} />
+        <CollageImage image={infraestructuraDummy[3]} center={true} /> */}
 
 
-        <CollageImage
+        {/* <CollageImage
           image={equipoDummy["Carlos Zapata"].image}
           type="team"
           name={equipoDummy["Carlos Zapata"].name}
@@ -66,39 +71,40 @@ export default function Studio() {
          <CollageImage         className={"2xl:block hidden"}
          image={infraestructuraDummy[2]} center={true} size={'vertical'} />
         <CollageImage         className={"2xl:hidden block"}
-         image={infraestructuraDummy[9]} center={true}  />
+         image={infraestructuraDummy[9]} center={true}  /> */}
         
 
+       
+       
+        <CollageImage image={reel2} type="video" />
+        {/* <CollageImage   image={infraestructuraDummy[11]} center={true} /> */}
         <CollageImage
           type="text"
           text={`Sabemos que un estudio de diseño que explota su lado creativo comprende mucho más que las capacidades intelectuales de sus integrantes. Es por eso que aquí todos y cada uno de los profesionales de este equipo, dejamos –en constante coautoría– una cuota de emoción y de pertenencia en cada nuevo reto que emprendemos. `}
         />
 
-       
-        <CollageImage image={reel2} type="video" />
-        <CollageImage   image={infraestructuraDummy[11]} center={true} />
 
-        <CollageImage image={infraestructuraDummy[6]} className={"2xl:block hidden"} center={true} size={"horizontal"}/>
-        <CollageImage image={infraestructuraDummy[6]}  className={"2xl:hidden block"} center={true} />
+        {/* <CollageImage image={infraestructuraDummy[6]} className={"2xl:block hidden"} center={true} size={"horizontal"}/> */}
+        {/* <CollageImage image={infraestructuraDummy[6]}  className={"2xl:hidden block"} center={true} /> */}
 
-        <CollageImage
+        {/* <CollageImage
           image={equipoDummy["Marykarly"].image}
           type="team"
           name={equipoDummy["Marykarly"].name}
           position={equipoDummy["Marykarly"].position}
         />
         
-        <CollageImage image={infraestructuraDummy[8]} center={true} />
+        <CollageImage image={infraestructuraDummy[8]} center={true} /> */}
 
         
 
-        <CollageImage
+        {/* <CollageImage
           image={equipoDummy["Anthony"].image}
           type="team"
           name={equipoDummy["Anthony"].name}
           position={equipoDummy["Anthony"].position}
-        />
-          <CollageImage image={reel3} type="video" />
+        /> */}
+          {/* <CollageImage image={reel3} type="video" /> */}
           <CollageImage
           image={equipoDummy["Ghelenn"].image}
           type="team"
@@ -117,7 +123,7 @@ export default function Studio() {
           name={equipoDummy["Nashla"].name}
           position={equipoDummy["Nashla"].position}
         />
-        <CollageImage className={'2xl:block hidden'} image={infraestructuraDummy[5]} size={'horizontal'} center />
+        <CollageImage className={'2xl:block hidden'} image={infraestructuraDummy[5]}  center />
         <CollageImage className={'2xl:hidden block'} i image={infraestructuraDummy[5]}  center />
 
         <CollageImage

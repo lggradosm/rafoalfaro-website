@@ -2,39 +2,21 @@ import {
   collection,
   query,
   getDocs,
-  orderBy,
-  limit,
-  startAt,
-  endAt,
-  where,
-  startAfter,
 } from "firebase/firestore";
 import { db } from "../config/firebase";
-const col = collection(db, "projects");
-const initialAmountProjects = 10;
+const api_server_url = import.meta.env.VITE_API_SERVER
 export const getLastProjects = async () => {
-  const q = query(col, orderBy("created_at", "desc"), limit(6));
-  return await getDocs(q);
+  const data = await fetch(`${api_server_url }/projects/last`)
+  return await data.json()
 };
 
 export const getProjectsGallery = async () => {
-  const q = query(
-    col,
-    orderBy("created_at", "desc"),
-    limit(initialAmountProjects)
-  );
-  return await getDocs(q);
+  const data = await fetch(`${api_server_url }/projects/1`)
+  return await data.json()
 };
-
-export const getProjectsPagination = async (project) => {
-  const amount = 5;
-  const q = query(
-    col,
-    orderBy("created_at", "desc"),
-    startAfter(project?.created_at),
-    limit(amount)
-  );
-  return await getDocs(q);
+export const getProjectsPagination = async (page) => {
+  const data = await fetch(`${api_server_url }/projects/${page}`)
+  return await data.json()
 };
 
 export const getCover = async () => {
@@ -43,6 +25,7 @@ export const getCover = async () => {
 };
 
 export const getProjectByUrl = async (url) => {
-  const q = query(col, limit(1), where("url", "==", url));
-  return await getDocs(q);
+  const data = await fetch(`${api_server_url}/projects/search?url=${url}`)
+  // console.log(await data.json())
+  return await data.json()
 };

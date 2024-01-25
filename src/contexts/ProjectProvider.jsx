@@ -13,10 +13,7 @@ export function ProjectContextProvider({ children }) {
           ...doc.data(),
           id: doc.id,
         }));
-        const projectData = projectSnapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
+        const projectData = projectSnapshot
         setCoverProject(data[0]);
         setProjects(projectData);
         setLoaded(true);

@@ -5,11 +5,8 @@ const useGetProjectByIdFetch = (url) => {
 
   const getProjectByIdFecth = () => {
     getProjectByUrl(url).then((snapshot) => {
-      const projectData = snapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setProject(projectData[0]);
+      const projectData = snapshot
+      setProject(projectData);
     });
   };
 

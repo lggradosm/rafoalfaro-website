@@ -7,6 +7,7 @@ export default function ProjectGallery({ selectedCategory }) {
   const externalRef = useRef(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
   const { projects, nextProjectPage } = useProjectReducer();
+  const [page, setPage] = useState(1)
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -24,26 +25,27 @@ export default function ProjectGallery({ selectedCategory }) {
 
   useEffect(() => {
     if (isIntersecting && projects) {
-      nextProjectPage(projects.slice(-1)[0]);
+      nextProjectPage(page+1);
+      setPage(prev => prev + 1)
     }
   }, [isIntersecting]);
 
   return (
     <div>
       <div className="w-full h-full min-h-[40rem]  grid  grid-cols-2  lg:grid-cols-3 xl:grid-cols-5 gap-1 p-1 bg-primaryColor ">
-        {projects?.map((item) => (
+        {projects?.map((item,index) => (
           <div
-            key={item.id}
-            style={{ backgroundImage: `url(${item.featured_image})` }}
+            key={index}
+            style={{ backgroundImage: `url(${item.featuredImage})` }}
             className="w-full overflow-hidden relative saturate-0  aspect-square  group hover:saturate-100 bg-cover bg-center bg-no-repeat  animate-scaleProjectGallery "
           >
             <NavLink
               to={item.url}
-              style={{ backgroundImage: `url(${item.featured_image})` }}
+              style={{ backgroundImage: `url(${item.featuredImage})` }}
               className={`cursor-pointer  `}
             >
               <div className="absolute h-full w-full bg-black/[85%] flex items-center group-hover:opacity-0  duration-[350ms] ease-[cubic-bezier(.42,-0.01,.47,1)]  ">
-                <Image className=" w-full h-auto " src={item.sketch_image} />
+                <Image className=" w-full h-auto " src={item.sketchImage} />
 
                 {/* <img
                   src={item.sketch_image}
@@ -52,7 +54,7 @@ export default function ProjectGallery({ selectedCategory }) {
                 /> */}
                 <div className="w-fit absolute bottom-0 group-hover:-bottom-10 duration-[350ms] ease-[cubic-bezier(.42,-0.01,.47,1)]  text-center bg-black p-3 ">
                   <h3 className="text-white text-[.55em] sm:text-xs lg:text-[.95em] 2xl:text-[.8em] font-manrope font-bold -tracking-tight">
-                    {item.title_es}
+                    {item.titleEs}
                   </h3>
                 </div>
               </div>

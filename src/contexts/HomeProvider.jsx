@@ -11,10 +11,7 @@ export function HomeContextProvider({ children }) {
   useEffect(() => {
     Promise.all([getLastProjects(), getCovers()]).then(
       ([projectsSnapshot, coversSnapshot]) => {
-        const projectsData = projectsSnapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
+        const projectsData = projectsSnapshot
         const coversData = coversSnapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
